@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>rendering filting things</title>
+</head>
+<body>
+	<h1>Student Details</h1>
+	<p>Name: {{ name|title }}</p>
+	<p>Course: {{ course|upper }}</p>
+	<p>City: {{ city|capfirst }}</p>
+
+	<h2>Students</h2>
+	<ul>
+		{% for student in students %}
+			<li>{{ student|upper }}</li>
+		{% empty %}
+			<li>No students found.</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

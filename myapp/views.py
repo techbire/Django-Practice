@@ -1,8 +1,8 @@
 from decimal import Decimal
-
+from django.shortcuts import render
 from django.http import Http404, HttpResponse
 
-
+# menu items demo
 MENU_ITEMS = {
 	'burger': Decimal('5.99'),
 	'pizza': Decimal('8.49'),
@@ -20,3 +20,25 @@ def menu_item(request, item_name):
 
 	display_name = item_name.title()
 	return HttpResponse(f'{display_name}: ${price:.2f}')
+
+
+def menu(request):
+	items = '\n'.join(
+		f'{item_name.title()}: ${price:.2f}'
+		for item_name, price in MENU_ITEMS.items()
+	)
+	return HttpResponse(items, content_type='text/plain')
+
+
+
+def home(request):
+    return render(request,"home.html")
+
+def filter_demo(request):
+	context={
+		"name":"ansh",
+		"course":"btech",
+		"city":"ballia",
+		"students":["aa","bb","cc"]
+	}
+	return render(request,'filter.html',context)
