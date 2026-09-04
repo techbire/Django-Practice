@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Result</title>
+</head>
+<body>
+	<h1>Student Result</h1>
+	<p>Name: {{ name }}</p>
+	{% if marks >= 40 %}
+		<p>Marks: {{ marks }} - Pass</p>
+	{% else %}
+		<p>Marks: {{ marks }} - Fail</p>
+	{% endif %}
+
+	<h2>Subjects</h2>
+	<ul>
+		{% for subject in subjects %}
+			<li>{{ subject }}</li>
+		{% empty %}
+			<li>No subjects found.</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

@@ -23,11 +23,7 @@ def menu_item(request, item_name):
 
 
 def menu(request):
-	items = '\n'.join(
-		f'{item_name.title()}: ${price:.2f}'
-		for item_name, price in MENU_ITEMS.items()
-	)
-	return HttpResponse(items, content_type='text/plain')
+	return render(request, 'menu.html', {'menu_items': MENU_ITEMS.items()})
 
 
 
@@ -42,3 +38,13 @@ def filter_demo(request):
 		"students":["aa","bb","cc"]
 	}
 	return render(request,'filter.html',context)
+
+
+def result(request):
+	context={
+		"name":"ansh",
+		"marks":56,
+		"subjects":["Python", "Django", "HTML"]
+	}
+	return render(request,"result.html",context)
+	
