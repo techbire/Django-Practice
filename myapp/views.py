@@ -47,4 +47,12 @@ def result(request):
 		"subjects":["Python", "Django", "HTML"]
 	}
 	return render(request,"result.html",context)
+
+
+def name_form(request):
+	name = request.POST.get('name', '').strip() if request.method == 'POST' else ''
+	return render(request, 'name_form.html', {
+		'name': name,
+		'error': 'Please enter your name.' if request.method == 'POST' and not name else '',
+	})
 	
